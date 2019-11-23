@@ -1,0 +1,793 @@
+//=CONFIG============================================================
+//---COLORS VARIABLES---
+$ugly-purple: #a33ba3;
+$black: #292622;
+$pale-grey: #f8f7fa;
+$white: #ffffff;
+$greyish: #a3a3a3;
+$white-two: #e9e9e9;
+$rich-purple: #730073;
+$purplish-pink: #d362c4;
+$text-paragraph: #7a7a7a;
+$placeholder-form: #b8b8b8;
+$hover-btn: #7a0f7a;
+$btn-border: #b97fb9;
+//---/COLORS VARIABLES---
+//---FONTS VARIABLES---
+$font-normal: 400;
+$font-medium: 500;
+$font-semi_bold: 600;
+$font-bold: 700;
+$font-extra_bold: 800;
+$font-heavy: 900;
+//---/FONTS VARIABLES---
+//---COMMONS---
+body {
+  font-family: Helvetica, Arial, "PingFang SC Regular", “Microsoft YaHei”, ”WenQuanYi Micro Hei”, sans-serif;
+  font-size: 16px;
+  background-color: $pale-grey;
+}
+a:active,
+a:hover,
+a:focus a {
+  display: inline-block;
+  color: inherit;
+}
+//---/COMMONS---
+//---BREAKPOINTS---
+@mixin breakpoints($point) {
+  @if $point == exSm {
+    @media (min-width: 1px) {
+      @content;
+    }
+  } @else if $point == Sm {
+    @media (min-width: 576px) {
+      @content;
+    }
+  } @else if $point == Md {
+    @media (min-width: 768px) {
+      @content;
+    }
+  } @else if $point == Lg {
+    @media (min-width: 992px) {
+      @content;
+    }
+  } @else if $point == Xl {
+    @media (min-width: 1200px) {
+      @content;
+    }
+  }
+}
+//---/BREAKPOINTS---
+//---MIXINS FONTS---
+@mixin add-font-properties($fam: false, $size: false, $colour: false, $weight: false, $lh: false) {
+  @if $fam {
+    font-family: Helvetica, Arial, $fam, “Microsoft YaHei”, ”WenQuanYi Micro Hei”, sans-serif;
+  }
+  @if $size {
+    font-size: $size;
+  }
+  @if $colour {
+    color: $colour;
+  }
+  @if $weight {
+    font-weight: $weight;
+  }
+  @if $lh {
+    line-height: $lh;
+  }
+}
+@mixin H2-sc {
+  @include add-font-properties("PingFang SC SemiBold", 1.5rem, $black, $font-semi_bold, 2rem);
+}
+@mixin body-sc {
+  @include add-font-properties("PingFang SC Regular", 1.125rem, $text-paragraph, $font-normal, 1.75rem);
+}
+@mixin Text-Style {
+  @include add-font-properties("PingFang SC Regular", 1.125rem, $white, $font-normal, 1.75rem);
+}
+//---/MIXINS FONTS---
+//=/CONFIG============================================================
+
+//=FORM TYPES============================================================
+
+@mixin form-type-1 {
+  .title-note {
+    p {
+      @include add-font-properties("PingFang SC Medium", 1rem, $black, $font-medium, 1.5rem);
+      margin: 0;
+    }
+    span {
+      @include add-font-properties("PingFang SC Regular", 0.8125rem, $text-paragraph, $font-normal, 1.25rem);
+    }
+  }
+  .send-email {
+    max-width: 100%;
+    height: 40px;
+    input[type="email"] {
+      display: inline-block;
+      outline: none;
+      width: 75%;
+      height: 100%;
+      padding: 8px 12px;
+      border: 1px solid $placeholder-form;
+      border-radius: 6px 0 0 6px;
+      &:focus {
+        border: 1px solid $black;
+      }
+      &:invalid {
+        border: 1px solid red;
+      }
+      
+      // &:valid {
+      //   border: 1px solid $black;
+      // }
+    }
+    input[type="submit"] {
+      display: inline-block;
+      outline: none;
+      height: 100%;
+      @include add-font-properties("PingFang SC Medium", 1rem, $white, $font-medium, 1.5rem);
+      background-color: $ugly-purple;
+      padding: 8px 28px;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      &:hover,
+      &:focus {
+        background-color: $hover-btn;
+      }
+    }
+  }
+}
+//=================================================================================
+@mixin form-type-2 {
+  background-color: $pale-grey;
+  border-radius: 7px;
+  box-shadow: 0 20px 30px 0 rgba(85, 56, 152, 0.79);
+  @include breakpoints(exSm) {
+    padding: 36px 19px;
+    min-height: 150px;
+  }
+  @include breakpoints(Md) {
+    padding: 45px 36px;
+  }
+  .title-note {
+    p {
+      @include add-font-properties("PingFang SC SemiBold", 1.5rem, $black, $font-semi_bold, 2rem);
+      margin: 0;
+    }
+    span {
+      @include add-font-properties("PingFang SC Regular", 1.125rem, $text-paragraph, $font-normal, 1.75rem);
+    }
+  }
+  .send-email {
+    @include breakpoints(exSm) {
+      border-radius: 6px;
+      width: 100%;
+      max-width: 350px;
+      height: 100%;
+    }
+    @include breakpoints(Md) {
+      max-height: 48px;
+    }
+    input[type="email"] {
+      display: inline-block;
+      outline: none;
+      height: 100%;
+      padding: 8px 12px;
+      border: 1px solid $placeholder-form;
+      &:focus {
+        border: 1px solid $black;
+      }
+      &:invalid {
+        border: 1px solid red;
+      }
+      
+      &:valid {
+        border: 1px solid $black;
+      }
+      @include breakpoints(exSm) {
+        border-radius: 6px;
+        width: 100%;
+        min-height: 48px;
+        margin-bottom: 13px;
+        margin-top: 24px;
+      }
+      @include breakpoints(Md) {
+        border-radius: 6px 0 0 6px;
+        height: 100%;
+        width: 75%;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+    input[type="submit"] {
+      display: inline-block;
+      outline: none;
+
+      @include add-font-properties("PingFang SC Semibold", 1.125rem, $white, $font-semi_bold, 1.125rem);
+      background-color: $ugly-purple;
+      padding: 8px 28px;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      &:hover,
+      &:focus {
+        background-color: $hover-btn;
+      }
+      @include breakpoints(exSm) {
+        border-radius: 6px;
+        width: 100%;
+        min-height: 48px;
+      }
+      @include breakpoints(Md) {
+        border-radius: 0 6px 6px 0;
+        height: 100%;
+        width: 152px;
+      }
+    }
+  }
+}
+//=================================================================================
+@mixin form-type-3 {
+  background-image: url(../assets/img/coverFinalBgrnd@2x.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 7px;
+  height: 100%;
+  min-height: 150px;
+  @include breakpoints(exSm) {
+    padding: 36px 19px;
+  }
+  @include breakpoints(Md) {
+    padding: 40px 36px;
+  }
+  .title-note {
+    p {
+      @include add-font-properties("PingFang SC SemiBold", 1.5rem, $white, $font-semi_bold, 2rem);
+      margin: 0;
+    }
+    span {
+      @include add-font-properties("PingFang SC Regular", 1.125rem, $white, $font-normal, 1.75rem);
+    }
+  }
+  .send-email {
+    @include breakpoints(exSm) {
+      border-radius: 6px;
+      width: 100%;
+      max-width: 350px;
+      height: 100%;
+    }
+    @include breakpoints(Md) {
+      max-height: 48px;
+    }
+    input[type="email"] {
+      display: inline-block;
+      outline: none;
+      height: 100%;
+      padding: 8px 12px;
+      border: 1px solid $placeholder-form;
+      &:focus {
+        border: 1px solid $black;
+      }
+      &:invalid {
+        border: 1px solid red;
+      }
+      
+      &:valid {
+        border: 1px solid $black;
+      }
+      @include breakpoints(exSm) {
+        border-radius: 6px;
+        width: 100%;
+        height: 48px;
+        margin-bottom: 13px;
+        margin-top: 24px;
+      }
+      @include breakpoints(Md) {
+        border-radius: 6px 0 0 6px;
+        height: 100%;
+        width: 75%;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+    }
+    input[type="submit"] {
+      display: inline-block;
+      outline: none;
+
+      @include add-font-properties("PingFang SC Semibold", 1.125rem, $white, $font-semi_bold, 1.125rem);
+      background-color: $ugly-purple;
+      padding: 8px 28px;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      &:hover,
+      &:focus {
+        background-color: $hover-btn;
+      }
+      @include breakpoints(exSm) {
+        border-radius: 6px;
+        width: 100%;
+        height: 48px;
+      }
+      @include breakpoints(Md) {
+        border-radius: 0 6px 6px 0;
+        height: 100%;
+        width: 152px;
+      }
+    }
+  }
+}
+
+//=/FORM TYPES============================================================
+//-------------------------------------------------------
+.border-tp {
+  border-top: 2px solid $pale-grey;
+  @include breakpoints(Xl) {
+    border-top: none;
+  }
+}
+.border-bt {
+  border-bottom: 2px solid $pale-grey;
+  @include breakpoints(Xl) {
+    border-bottom: none;
+  }
+}
+//-------------------------------------------------------
+.string-attention {
+  color: $ugly-purple;
+}
+.string-attention-2 {
+  color: $black;
+  font-weight: $font-semi_bold;
+}
+.text-opasity {
+  opacity: 0.6;
+}
+//-------------------------------------------------------
+.max-size_section {
+  width: 100%;
+  max-width: 940px;
+}
+
+//---------------TEXT ARTICLES-----------
+@mixin text-articles {
+  .attention-text {
+    border-left: 3px solid $ugly-purple;
+    @include add-font-properties("PingFang SC SemiBold", 1.25rem, $ugly-purple, $font-semi_bold, 1.75rem);
+    @include breakpoints(exSm) {
+      margin: 40px 10px;
+      padding: 0 10px;
+    }
+    @include breakpoints(Md) {
+      margin: 40px 50px;
+      padding: 0 30px;
+    }
+  }
+  .attention-text-2 {
+    background-color: $white-two;
+    border-left: 2px solid $ugly-purple;
+    margin-bottom: 48px;
+    @include add-font-properties("PingFang SC Regular", 0.875rem, $text-paragraph, $font-normal, 1.25rem);
+    padding: 24px 26px 24px 80px;
+  }
+  h2 {
+    margin-top: 4rem;
+    @include H2-sc();
+  }
+  p {
+    @include body-sc();
+  }
+  .list-article {
+    ol {
+      counter-reset: myCounter;
+      padding: 0;
+    }
+    li {
+      list-style: none;
+      width: 100%;
+      p {
+        margin: 0;
+      }
+    }
+    li:nth-child(-n + 2) {
+      border-bottom: 1px solid $greyish;
+    }
+    li:before {
+      counter-increment: myCounter;
+      content: counter(myCounter);
+      color: $ugly-purple;
+      display: inline-block;
+      text-align: center;
+      margin-right: 48px;
+      margin-left: 16px;
+      line-height: 3.5rem;
+      font-size: 2.5rem;
+    }
+  }
+  .list-article-2 {
+    ul {
+      padding-left: 0;
+    }
+    p {
+      margin-bottom: 0;
+    }
+    li {
+      list-style-type: none;
+    }
+    li:before {
+      display: inline-block;
+      color: $ugly-purple;
+      content: "\2022";
+      padding-right: 10px;
+    }
+  }
+  .list-article-3 {
+    ul {
+      padding-left: 0;
+    }
+    span {
+      @include add-font-properties("PingFang SC SemiBold", 1.125rem, $ugly-purple, $font-semi_bold, 1.75rem);
+    }
+    li {
+      list-style-type: none;
+    }
+    li:before {
+      display: inline-block;
+      color: $black;
+      content: "\2022";
+      padding-right: 10px;
+    }
+  }
+}
+//---------------/TEXT ARTICLES-----------
+
+//---/MIXINS ITEM---
+
+//---------------------NAVBAR-----------------
+.fixed-top {
+  @include breakpoints(exSm) {
+    overflow-y: scroll;
+    max-height: 100%;
+  }
+  @include breakpoints(Xl) {
+    overflow-y: visible;
+  }
+}
+.navbar {
+  background-color: $white;
+  min-height: 64px;
+  &-brand {
+    @include add-font-properties("PingFang SC Medium", 1.5rem, $black, $font-medium, 2.25rem);
+    .main-icon {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  &-toggler {
+    position: relative;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+    .burger-menu {
+      &__button {
+        display: block;
+        width: 28px;
+        height: 18px;
+        background-color: transparent;
+      }
+      &__lines,
+      &__lines::after,
+      &__lines::before {
+        position: absolute;
+        width: 28px;
+        height: 3px;
+        background-color: $ugly-purple;
+        margin-left: -14px;
+      }
+      &__lines {
+        position: absolute;
+        top: 50%;
+        margin-top: -1.5px;
+        left: 50%;
+        display: inline-block;
+      }
+      &__lines::before {
+        content: "";
+        top: -7px;
+      }
+      &__lines::after {
+        content: "";
+        top: 7px;
+      }
+    }
+    .burger-menu_active {
+      .burger-menu__lines {
+        background-color: transparent;
+      }
+      .burger-menu__lines::before {
+        top: 0;
+        transform: rotate(45deg);
+      }
+      .burger-menu__lines::after {
+        top: 0;
+        transform: rotate(-45deg);
+      }
+    }
+  }
+  &-nav {
+    @include add-font-properties("PingFang SC Medium", 1.125rem, $black, $font-medium, 1.5rem);
+    @include breakpoints(Xl) {
+      @include add-font-properties("PingFang SC Regular", 1rem, $black, $font-medium, 1.5rem);
+    }
+    .nav-item {
+      .nav-link {
+        color: $ugly-purple;
+        transition: background-color 0.5s;
+        @include breakpoints(exSm) {
+          &:hover,
+          &:focus {
+            color: $ugly-purple;
+            background-color: $pale-grey;
+          }
+        }
+        @include breakpoints(Xl) {
+          &:hover {
+            border-radius: 6px;
+          }
+        }
+      }
+      .disabled {
+        color: $black;
+      }
+    }
+  }
+  //-----NAVBAR FORM-------------------------------------------------
+  &-form {
+    max-width: 600px;
+    @include form-type-1;
+  }
+  //-----/NAVBAR FORM--------------------------------------------------
+}
+//---------------------/NAVBAR-----------------
+//---------------------HEADER CONTENT----------
+.header-section {
+  margin-top: 84px;
+
+  &__title {
+    text-align: center;
+    border-radius: 9px;
+    min-height: 400px;
+    background-image: url(../assets/img/coverHeadBgrnd@2x.jpg);
+    background-position: center;
+  }
+
+  h1 {
+    @include add-font-properties("PingFang SC SemiBold", 2.375rem, $white, $font-semi_bold, 3rem);
+    @include breakpoints(exSm) {
+      font-size: 2rem;
+    }
+    @include breakpoints(Sm) {
+      font-size: 2.375rem;
+    }
+  }
+  .avatar-autor {
+    img {
+      width: 36px;
+      height: 36px;
+    }
+    p {
+      @include add-font-properties("PingFang SC SemiBold", 0.8125rem, $white, $font-semi_bold, 1.25rem);
+      text-transform: uppercase;
+    }
+  }
+
+  &__text {
+    @include text-articles();
+  }
+}
+//---------------------/HEADER CONTENT----------
+
+//---------------------MAIN CONTENT----------
+.main-section {
+  //---------------------FIRST METOD CONTENT----------
+  .first-metod {
+    .bg-section {
+      min-height: 1000px;
+      background-image: linear-gradient(128deg, #6190ee, $purplish-pink 98%);
+      background-position: center;
+    }
+    &__heading {
+      h2 {
+        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $white, $font-semi_bold, 2rem);
+      }
+      hr {
+        margin: 0;
+        width: 100%;
+        border: none;
+        background-color: rgba(248, 247, 250, 0.22);
+        height: 1px;
+      }
+    }
+    &__description {
+      padding: 56px 0;
+      img {
+        width: 128px;
+        height: 128px;
+      }
+      h3 {
+        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $white, $font-semi_bold, 2rem);
+      }
+      p {
+        @include Text-Style();
+      }
+    }
+    &__picture {
+      padding-bottom: 56px;
+      @include breakpoints(Lg) {
+        padding: 56px 0 56px 30px;
+      }
+    }
+    .first-metod__form {
+      @include form-type-2();
+    }
+    .learn-more {
+      @include add-font-properties("PingFang SC Regular", 1rem, $white, $font-normal, 1rem);
+      margin-top: 40px;
+
+      p {
+        display: block;
+        line-height: 1.5rem;
+        margin: 0;
+      }
+      .star {
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+      }
+      a {
+        @include add-font-properties("PingFang SC Semibold", 1rem, $white, $font-semi_bold, 1.5rem);
+        &:hover {
+          color: $ugly-purple;
+        }
+      }
+    }
+    &__text {
+      @include text-articles();
+    }
+    .first-metod__take-form {
+      @include form-type-3();
+    }
+  }
+  //---------------------/FIRST METOD CONTENT----------
+  //---------------------SECOND CONTENT----------
+  .second-metod {
+    .btn-get-now {
+      @include add-font-properties("PingFang SC Semibold", 0.9375rem, $rich-purple, $font-semi_bold, 1rem);
+      text-align: center;
+      width: 150px;
+      height: 40px;
+      display: block;
+      text-decoration: none;
+      padding: 10px 24px;
+      border: 1px solid $btn-border;
+      border-radius: 6px;
+      transition: 0.5s;
+      &:hover,
+      &:focus {
+        color: white;
+        background-color: $rich-purple;
+      }
+    }
+    .bg-section {
+      min-height: 690px;
+      background-color: $white-two;
+    }
+    &__heading {
+      h2 {
+        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $ugly-purple, $font-semi_bold, 2rem);
+      }
+      hr {
+        margin: 0;
+        width: 100%;
+        border: none;
+        background-color: #d8d8d8;
+        height: 1px;
+      }
+    }
+    .learn-more {
+      @include add-font-properties("PingFang SC Regular", 1rem, $black, $font-normal, 1rem);
+      img {
+        width: 19px;
+        height: 19px;
+      }
+      p {
+        display: block;
+        line-height: 1.5rem;
+        margin: 0;
+      }
+      .star {
+        display: inline-block;
+        width: 19px;
+        height: 19px;
+      }
+      a {
+        @include add-font-properties("PingFang SC Semibold", 1rem, $white, $font-semi_bold, 1.5rem);
+        &:hover {
+          color: $ugly-purple;
+        }
+      }
+    }
+    &__description {
+      padding: 56px 0px;
+      img {
+        width: 128px;
+        height: 128px;
+      }
+      h3 {
+        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $black, $font-semi_bold, 2rem);
+      }
+      p {
+        @include Text-Style();
+        color: $black;
+      }
+    }
+    &__picture {
+      padding-bottom: 56px;
+      margin-left: 25px;
+      @include breakpoints(Lg) {
+        padding: 56px 0 56px 0;
+      }
+    }
+    &__text {
+      @include text-articles();
+    }
+    &__form-wrapper {
+      min-height: 437px;
+      background-image: url(../assets/img/coverFinalBgrnd@2x.jpg);
+      background-position: center;
+      background-size: cover;
+      border-radius: 9px;
+      .sign-in {
+        color: $white;
+      }
+    }
+    &__take-form {
+      @include form-type-2();
+    }
+  }
+  //---------------------/SECOND METOD CONTENT----------
+}
+//======/MAIN======
+//---------------------FORM REVIEWS CONTENT----------
+.form-reviews {
+  margin-bottom: 100px;
+}
+//---------------------/FORM REVIEWS CONTENT----------
+//---------------------FOOTER CONTENT-----------------
+.footer-section {
+  padding-top: 20px;
+  padding-bottom: 30px;
+  background-color: $white;
+  .up-text {
+    @include add-font-properties("PingFang SC Regular", 1rem, $text-paragraph, $font-normal, 1.375rem);
+    word-spacing: 1.7rem;
+    margin-bottom: 22px;
+  }
+  .line-shadow {
+    width: 100%;
+    height: 1px;
+    border-style: solid;
+    border-width: 1px;
+    border-image-source: linear-gradient(to right, rgba(204, 204, 204, 0), #cccccc 50%, rgba(204, 204, 204, 0));
+    border-image-slice: 1;
+  }
+
+  .down-text {
+    @include add-font-properties("PingFang SC Regular", 0.9375rem, $text-paragraph, $font-normal, 1.25rem);
+    word-spacing: 1rem;
+    margin-top: 16px;
+  }
+}
+//---------------------/FOOTER CONTENT-----------------
