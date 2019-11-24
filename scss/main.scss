@@ -21,9 +21,12 @@ $font-bold: 700;
 $font-extra_bold: 800;
 $font-heavy: 900;
 //---/FONTS VARIABLES---
+$fam-regular: "PingFang SC Regular";
+$fam-medium: "PingFang SC Medium";
+$fam-semibold: "PingFang SC SemiBold";
 //---COMMONS---
 body {
-  font-family: Helvetica, Arial, "PingFang SC Regular", “Microsoft YaHei”, ”WenQuanYi Micro Hei”, sans-serif;
+  font-family: Helvetica, Arial, $fam-regular, “Microsoft YaHei”, ”WenQuanYi Micro Hei”, sans-serif;
   font-size: 16px;
   background-color: $pale-grey;
 }
@@ -78,13 +81,13 @@ a:focus a {
   }
 }
 @mixin H2-sc {
-  @include add-font-properties("PingFang SC SemiBold", 1.5rem, $black, $font-semi_bold, 2rem);
+  @include add-font-properties($fam-semibold, 1.5rem, $black, $font-semi_bold, 2rem);
 }
 @mixin body-sc {
-  @include add-font-properties("PingFang SC Regular", 1.125rem, $text-paragraph, $font-normal, 1.75rem);
+  @include add-font-properties($fam-regular, 1.125rem, $text-paragraph, $font-normal, 1.75rem);
 }
 @mixin Text-Style {
-  @include add-font-properties("PingFang SC Regular", 1.125rem, $white, $font-normal, 1.75rem);
+  @include add-font-properties($fam-regular, 1.125rem, $white, $font-normal, 1.75rem);
 }
 //---/MIXINS FONTS---
 //=/CONFIG============================================================
@@ -94,11 +97,11 @@ a:focus a {
 @mixin form-type-1 {
   .title-note {
     p {
-      @include add-font-properties("PingFang SC Medium", 1rem, $black, $font-medium, 1.5rem);
+      @include add-font-properties($fam-medium, 1rem, $black, $font-medium, 1.5rem);
       margin: 0;
     }
     span {
-      @include add-font-properties("PingFang SC Regular", 0.8125rem, $text-paragraph, $font-normal, 1.25rem);
+      @include add-font-properties($fam-regular, 0.8125rem, $text-paragraph, $font-normal, 1.25rem);
     }
   }
   .send-email {
@@ -127,7 +130,7 @@ a:focus a {
       display: inline-block;
       outline: none;
       height: 100%;
-      @include add-font-properties("PingFang SC Medium", 1rem, $white, $font-medium, 1.5rem);
+      @include add-font-properties($fam-medium, 1rem, $white, $font-medium, 1.5rem);
       background-color: $ugly-purple;
       padding: 8px 28px;
       border: none;
@@ -153,11 +156,11 @@ a:focus a {
   }
   .title-note {
     p {
-      @include add-font-properties("PingFang SC SemiBold", 1.5rem, $black, $font-semi_bold, 2rem);
+      @include add-font-properties($fam-semibold, 1.5rem, $black, $font-semi_bold, 2rem);
       margin: 0;
     }
     span {
-      @include add-font-properties("PingFang SC Regular", 1.125rem, $text-paragraph, $font-normal, 1.75rem);
+      @include add-font-properties($fam-regular, 1.125rem, $text-paragraph, $font-normal, 1.75rem);
     }
   }
   .send-email {
@@ -205,7 +208,7 @@ a:focus a {
       display: inline-block;
       outline: none;
 
-      @include add-font-properties("PingFang SC Semibold", 1.125rem, $white, $font-semi_bold, 1.125rem);
+      @include add-font-properties($fam-semibold, 1.125rem, $white, $font-semi_bold, 1.125rem);
       background-color: $ugly-purple;
       padding: 8px 28px;
       border: none;
@@ -243,11 +246,11 @@ a:focus a {
   }
   .title-note {
     p {
-      @include add-font-properties("PingFang SC SemiBold", 1.5rem, $white, $font-semi_bold, 2rem);
+      @include add-font-properties($fam-semibold, 1.5rem, $white, $font-semi_bold, 2rem);
       margin: 0;
     }
     span {
-      @include add-font-properties("PingFang SC Regular", 1.125rem, $white, $font-normal, 1.75rem);
+      @include add-font-properties($fam-regular, 1.125rem, $white, $font-normal, 1.75rem);
     }
   }
   .send-email {
@@ -295,7 +298,7 @@ a:focus a {
       display: inline-block;
       outline: none;
 
-      @include add-font-properties("PingFang SC Semibold", 1.125rem, $white, $font-semi_bold, 1.125rem);
+      @include add-font-properties($fam-semibold, 1.125rem, $white, $font-semi_bold, 1.125rem);
       background-color: $ugly-purple;
       padding: 8px 28px;
       border: none;
@@ -353,7 +356,7 @@ a:focus a {
 @mixin text-articles {
   .attention-text {
     border-left: 3px solid $ugly-purple;
-    @include add-font-properties("PingFang SC SemiBold", 1.25rem, $ugly-purple, $font-semi_bold, 1.75rem);
+    @include add-font-properties($fam-semibold, 1.25rem, $ugly-purple, $font-semi_bold, 1.75rem);
     @include breakpoints(exSm) {
       margin: 40px 10px;
       padding: 0 10px;
@@ -367,7 +370,7 @@ a:focus a {
     background-color: $white-two;
     border-left: 2px solid $ugly-purple;
     margin-bottom: 48px;
-    @include add-font-properties("PingFang SC Regular", 0.875rem, $text-paragraph, $font-normal, 1.25rem);
+    @include add-font-properties($fam-regular, 0.875rem, $text-paragraph, $font-normal, 1.25rem);
     padding: 24px 26px 24px 80px;
   }
   h2 {
@@ -426,7 +429,7 @@ a:focus a {
       padding-left: 0;
     }
     span {
-      @include add-font-properties("PingFang SC SemiBold", 1.125rem, $ugly-purple, $font-semi_bold, 1.75rem);
+      @include add-font-properties($fam-semibold, 1.125rem, $ugly-purple, $font-semi_bold, 1.75rem);
     }
     li {
       list-style-type: none;
@@ -457,7 +460,7 @@ a:focus a {
   background-color: $white;
   min-height: 64px;
   &-brand {
-    @include add-font-properties("PingFang SC Medium", 1.5rem, $black, $font-medium, 2.25rem);
+    @include add-font-properties($fam-medium, 1.5rem, $black, $font-medium, 2.25rem);
     .main-icon {
       width: 32px;
       height: 32px;
@@ -517,10 +520,11 @@ a:focus a {
     }
   }
   &-nav {
-    @include add-font-properties("PingFang SC Medium", 1.125rem, $black, $font-medium, 1.5rem);
+    @include add-font-properties($fam-medium, 1.125rem, $black, $font-medium, 1.5rem);
     @include breakpoints(Xl) {
-      @include add-font-properties("PingFang SC Regular", 1rem, $black, $font-medium, 1.5rem);
+      @include add-font-properties($fam-regular, 1rem, $black, $font-medium, 1.5rem);
     }
+    
     .nav-item {
       .nav-link {
         color: $ugly-purple;
@@ -539,7 +543,7 @@ a:focus a {
         }
       }
       .disabled {
-        color: $black;
+        color: $black; 
       }
     }
   }
@@ -564,7 +568,7 @@ a:focus a {
   }
 
   h1 {
-    @include add-font-properties("PingFang SC SemiBold", 2.375rem, $white, $font-semi_bold, 3rem);
+    @include add-font-properties($fam-semibold, 2.375rem, $white, $font-semi_bold, 3rem);
     @include breakpoints(exSm) {
       font-size: 2rem;
     }
@@ -578,7 +582,7 @@ a:focus a {
       height: 36px;
     }
     p {
-      @include add-font-properties("PingFang SC SemiBold", 0.8125rem, $white, $font-semi_bold, 1.25rem);
+      @include add-font-properties($fam-semibold, 0.8125rem, $white, $font-semi_bold, 1.25rem);
       text-transform: uppercase;
     }
   }
@@ -600,7 +604,7 @@ a:focus a {
     }
     &__heading {
       h2 {
-        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $white, $font-semi_bold, 2rem);
+        @include add-font-properties($fam-semibold, 1.5rem, $white, $font-semi_bold, 2rem);
       }
       hr {
         margin: 0;
@@ -617,7 +621,7 @@ a:focus a {
         height: 128px;
       }
       h3 {
-        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $white, $font-semi_bold, 2rem);
+        @include add-font-properties($fam-semibold, 1.5rem, $white, $font-semi_bold, 2rem);
       }
       p {
         @include Text-Style();
@@ -633,7 +637,7 @@ a:focus a {
       @include form-type-2();
     }
     .learn-more {
-      @include add-font-properties("PingFang SC Regular", 1rem, $white, $font-normal, 1rem);
+      @include add-font-properties($fam-regular, 1rem, $white, $font-normal, 1rem);
       margin-top: 40px;
 
       p {
@@ -647,7 +651,7 @@ a:focus a {
         height: 19px;
       }
       a {
-        @include add-font-properties("PingFang SC Semibold", 1rem, $white, $font-semi_bold, 1.5rem);
+        @include add-font-properties($fam-semibold, 1rem, $white, $font-semi_bold, 1.5rem);
         &:hover {
           color: $ugly-purple;
         }
@@ -664,7 +668,7 @@ a:focus a {
   //---------------------SECOND CONTENT----------
   .second-metod {
     .btn-get-now {
-      @include add-font-properties("PingFang SC Semibold", 0.9375rem, $rich-purple, $font-semi_bold, 1rem);
+      @include add-font-properties($fam-semibold, 0.9375rem, $rich-purple, $font-semi_bold, 1rem);
       text-align: center;
       width: 150px;
       height: 40px;
@@ -686,7 +690,7 @@ a:focus a {
     }
     &__heading {
       h2 {
-        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $ugly-purple, $font-semi_bold, 2rem);
+        @include add-font-properties($fam-semibold, 1.5rem, $ugly-purple, $font-semi_bold, 2rem);
       }
       hr {
         margin: 0;
@@ -697,7 +701,7 @@ a:focus a {
       }
     }
     .learn-more {
-      @include add-font-properties("PingFang SC Regular", 1rem, $black, $font-normal, 1rem);
+      @include add-font-properties($fam-regular, 1rem, $black, $font-normal, 1rem);
       img {
         width: 19px;
         height: 19px;
@@ -713,7 +717,7 @@ a:focus a {
         height: 19px;
       }
       a {
-        @include add-font-properties("PingFang SC Semibold", 1rem, $white, $font-semi_bold, 1.5rem);
+        @include add-font-properties($fam-semibold, 1rem, $white, $font-semi_bold, 1.5rem);
         &:hover {
           color: $ugly-purple;
         }
@@ -726,7 +730,7 @@ a:focus a {
         height: 128px;
       }
       h3 {
-        @include add-font-properties("PingFang SC SemiBold", 1.5rem, $black, $font-semi_bold, 2rem);
+        @include add-font-properties($fam-semibold, 1.5rem, $black, $font-semi_bold, 2rem);
       }
       p {
         @include Text-Style();
@@ -771,7 +775,7 @@ a:focus a {
   padding-bottom: 30px;
   background-color: $white;
   .up-text {
-    @include add-font-properties("PingFang SC Regular", 1rem, $text-paragraph, $font-normal, 1.375rem);
+    @include add-font-properties($fam-regular, 1rem, $text-paragraph, $font-normal, 1.375rem);
     word-spacing: 1.7rem;
     margin-bottom: 22px;
   }
@@ -785,7 +789,7 @@ a:focus a {
   }
 
   .down-text {
-    @include add-font-properties("PingFang SC Regular", 0.9375rem, $text-paragraph, $font-normal, 1.25rem);
+    @include add-font-properties($fam-regular, 0.9375rem, $text-paragraph, $font-normal, 1.25rem);
     word-spacing: 1rem;
     margin-top: 16px;
   }
